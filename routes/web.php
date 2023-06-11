@@ -39,4 +39,5 @@ Route::prefix('/teams')->name('teams.')->group(function () {
     Route::get('/index', [TeamsControllers::class, 'index'])->name('index');
     Route::get('/create', [TeamsControllers::class, 'create'])->name('create');
     Route::post('/store', [TeamsControllers::class, 'store'])->name('store');
+    Route::delete('/delete', [TeamsControllers::class, 'delete'])->name('delete');
 });

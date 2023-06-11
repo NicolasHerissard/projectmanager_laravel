@@ -53,12 +53,20 @@ class ProjectController extends Controller
 
     public function edit()
     {
-
+        return view('project.edit', [
+            'title' => 'Project update '
+        ]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
+        Project::update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'deadline' => Carbon::parse($request->input('deadline'))
+        ]);
 
+        return redirect()->route('project.index');
     }
 
     #region delete

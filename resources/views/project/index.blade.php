@@ -41,6 +41,13 @@
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+            <td>
+                <form action="{{ route('project.edit', $projects->id) }}" method="post">
+                    @csrf
+                    {{ method_field('PUT') }}
+                    <button>Edit</button>
+                </form>
+            </td>
         </tr>
     @endforeach
     </tbody>
