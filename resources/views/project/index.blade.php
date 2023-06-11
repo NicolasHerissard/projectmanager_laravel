@@ -22,6 +22,7 @@
         <td>Date de fin</td>
         <td>Créé le</td>
         <td>Modifié le</td>
+        <td>Action</td>
     </tr>
     </thead>
     <tbody>
@@ -33,6 +34,13 @@
             <td>{{ \Carbon\Carbon::parse($projects->deadline)->format('d/m/Y') }}</td>
             <td>{{ \Carbon\Carbon::parse($projects->created_at)->format('d/m/Y') }}</td>
             <td>{{ \Carbon\Carbon::parse($projects->updated_at)->format('d/m/Y') }}</td>
+            <td>
+                <form action="{{ route('project.delete', $projects->id) }}" method="post" onsubmit="return confirm('Veux tu delete ?')">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </td>
         </tr>
     @endforeach
     </tbody>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    #region index
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $projects = Project::all();
@@ -17,14 +18,18 @@ class ProjectController extends Controller
             "project" => $projects
         ]);
     }
+    #endregion
 
+    #region create
     public function create(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('project.create', [
             'title' => 'Project création'
         ]);
     }
+    #endregion
 
+    #region store
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         /* Method 1
@@ -44,6 +49,7 @@ class ProjectController extends Controller
 
         return redirect()->route('project.index');
     }
+    #endregion
 
     public function edit()
     {
@@ -55,8 +61,12 @@ class ProjectController extends Controller
 
     }
 
-    public function delete()
+    #region delete
+    public function delete(Project $projects): \Illuminate\Http\RedirectResponse
     {
+        $projects->delete();
 
+        return redirect()->route('project.index');
     }
+    #endregion
 }

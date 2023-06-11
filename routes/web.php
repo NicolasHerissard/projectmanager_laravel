@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TeamsControllers;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,14 +27,16 @@ Route::prefix('/project')->name('project.')->group(function () {
     Route::get('/edit', [ProjectController::class, 'edit'])->name('edit');
     Route::put('/update', [ProjectController::class, 'update'])->name('update');
     Route::delete('/delete', [ProjectController::class, 'delete'])->name('delete');
-
-    Route::prefix('/task')->name('task.')->group(function () {
-
-    });
 });
 
-Route::prefix('/task')->name('task.')->group(function () {
+Route::prefix('/tasks')->name('tasks.')->group(function () {
     Route::get('/index', [TaskController::class, 'index'])->name('index');
     Route::get('/create', [TaskController::class, 'create'])->name('create');
     Route::post('/store', [TaskController::class, 'store'])->name('store');
+});
+
+Route::prefix('/teams')->name('teams.')->group(function () {
+    Route::get('/index', [TeamsControllers::class, 'index'])->name('index');
+    Route::get('/create', [TeamsControllers::class, 'create'])->name('create');
+    Route::post('/store', [TeamsControllers::class, 'store'])->name('store');
 });

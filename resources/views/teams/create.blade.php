@@ -9,14 +9,12 @@
 </head>
 <body>
 
-    <h1>Tache création</h1>
+    <h1>Teams création</h1>
 
-    <form action="{{ route('tasks.store') }}" method="post">
+    <form action="{{ route('teams.store') }}" method="post">
         @csrf
         <label for="name">Nom</label>
         <input id="name" type="text" name="name">
-        <label for="description">Description</label>
-        <textarea name="description" id="description" cols="30" rows="10"></textarea>
         <label for="project_id">Projet</label>
         <input id="project_id" type="text" name="project_id">
         <button type="submit">Enregistrer</button>

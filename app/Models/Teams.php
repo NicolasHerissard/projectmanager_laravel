@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Task extends Model
+class Teams extends Model
 {
     use HasFactory;
 
-    protected $table = "tasks";
+    protected $table = 'teams';
 
-    protected $fillable = ['name', 'description', 'project_id'];
+    protected $fillable = ['name', 'project_id'];
 
     public function project(): BelongsTo
     {
