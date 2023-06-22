@@ -22,6 +22,7 @@
             <td>Nom</td>
             <td>Description</td>
             <td>Projet</td>
+            <td>Utilisateur assigné</td>
             <td>Créé le</td>
             <td>Modifié le</td>
         </tr>
@@ -33,6 +34,7 @@
                 <td>{{ $task->name }}</td>
                 <td>{{ $task->description }}</td>
                 <td>{{ $task->project_id }}</td>
+                <td>{{ $task->users_id }}</td>
                 <td>{{ \Carbon\Carbon::parse($task->created_at)->format('d/m/Y') }}</td>
                 <td>{{ \Carbon\Carbon::parse($task->updated_at)->format('d/m/Y') }}</td>
             </tr>

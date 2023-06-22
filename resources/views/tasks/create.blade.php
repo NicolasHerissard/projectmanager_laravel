@@ -19,6 +19,8 @@
         <textarea name="description" id="description" cols="30" rows="10"></textarea>
         <label for="project_id">Projet</label>
         <input id="project_id" type="text" name="project_id">
+        <label for="users_id">Assigné à un utilisateur</label>
+        <input id="users_id" type="text" name="users_id">
         <button type="submit">Enregistrer</button>
     </form>
 

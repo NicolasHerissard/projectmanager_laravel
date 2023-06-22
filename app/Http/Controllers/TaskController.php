@@ -36,6 +36,7 @@ class TaskController extends Controller
             'name' => $request->input('name'),
             'description' => $request->input('description'),
             'project_id' => $request->input('project_id'),
+            'users_id' => $request->input('users_id')
         ]);
 
         return redirect()->route('tasks.index');

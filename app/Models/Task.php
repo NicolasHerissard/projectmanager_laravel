@@ -12,7 +12,7 @@ class Task extends Model
 
     protected $table = "tasks";
 
-    protected $fillable = ['name', 'description', 'project_id'];
+    protected $fillable = ['name', 'description', 'project_id', 'users_id'];
 
     public function project(): BelongsTo
     {
