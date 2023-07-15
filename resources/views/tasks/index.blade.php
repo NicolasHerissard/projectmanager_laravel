@@ -40,6 +40,11 @@
                         @method('DELETE')
                         <button id="btnDelete" type="submit" value="Delete">Delete</button>
                     </form>
+                    <form action="{{ route('tasks.edit', $task->id) }}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <button>Edit</button>
+                    </form>
                 </td>
             </tr>
         @endforeach

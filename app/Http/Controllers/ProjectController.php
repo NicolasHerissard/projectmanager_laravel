@@ -52,13 +52,16 @@ class ProjectController extends Controller
     }
     #endregion
 
+    #region edit
     public function edit($id)
     {
         $project = Project::find($id);
 
         return view('project.edit', compact('project'));
     }
+    #endregion
 
+    #region update
     public function update(Request $request, $id)
     {
         $project = Project::find($id);
@@ -69,6 +72,7 @@ class ProjectController extends Controller
 
         return redirect()->route('project.index');
     }
+    #endregion
 
     #region delete
     public function delete($id): \Illuminate\Http\RedirectResponse

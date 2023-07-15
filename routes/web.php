@@ -38,6 +38,8 @@ Route::prefix('/tasks')->name('tasks.')->group(function () {
     Route::get('/index', [TaskController::class, 'index'])->name('index');
     Route::get('/create', [TaskController::class, 'create'])->name('create');
     Route::post('/store', [TaskController::class, 'store'])->name('store');
+    Route::put('/edit/{id}', [TaskController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [TaskController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [TaskController::class, 'delete'])->name('delete');
 });
 
@@ -45,6 +47,8 @@ Route::prefix('/teams')->name('teams.')->group(function () {
     Route::get('/index', [TeamsControllers::class, 'index'])->name('index');
     Route::get('/create', [TeamsControllers::class, 'create'])->name('create');
     Route::post('/store', [TeamsControllers::class, 'store'])->name('store');
+    Route::put('/edit/{id}', [TeamsControllers::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [TeamsControllers::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [TeamsControllers::class, 'delete'])->name('delete');
 });
 
@@ -52,5 +56,7 @@ Route::prefix('/users')->name('users.')->group(function () {
     Route::get('/index', [UserController::class, 'index'])->name('index');
     Route::get('/create', [UserController::class, 'create'])->name('create');
     Route::post('/store', [UserController::class, 'store'])->name('store');
+    Route::put('/edit/{id}', [UserController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [UserController::class, 'update'])->name('update');
     Route::delete('/delete/{id}', [UserController::class, 'delete'])->name('delete');
 });

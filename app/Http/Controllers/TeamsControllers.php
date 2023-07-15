@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class TeamsControllers extends Controller
 {
+    #region index
     public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $teams = Teams::all();
@@ -16,6 +17,7 @@ class TeamsControllers extends Controller
             'teams' => $teams
         ]);
     }
+    #endregion
 
     public function create(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
@@ -24,6 +26,7 @@ class TeamsControllers extends Controller
         ]);
     }
 
+    #region store
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         Teams::create([
@@ -33,16 +36,28 @@ class TeamsControllers extends Controller
 
         return redirect()->route('teams.index');
     }
+    #endregion
 
-    public function edit()
+    #region edit
+    public function edit($id)
     {
+        $teams = Teams::find($id);
 
+        return view('teams.edit', compact('teams'));
     }
+    #endregion
 
-    public function update()
+    #region update
+    public function update(Request $request, $id)
     {
+        $teams = Teams::find($id);
+        $teams->name = $request->input('name');
+        $teams->project_id = $request->input('project_id');
+        $teams->update();
 
+        return redirect()->route('teams.index');
     }
+    #endregion
 
     #region delete
     public function delete($id): \Illuminate\Http\RedirectResponse

@@ -43,14 +43,23 @@ class TaskController extends Controller
     }
     #endregion
 
-    public function edit()
+    public function edit($id)
     {
+        $tasks = Task::find($id);
 
+        return view('tasks.edit', compact('tasks'));
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
+        $project = Task::find($id);
+        $project->name = $request->input('name');
+        $project->description = $request->input('description');
+        $project->project_id = $request->input('project_id');
+        $project->users_id = $request->input('users_id');
+        $project->update();
 
+        return redirect()->route('tasks.index');
     }
 
     public function delete($id)

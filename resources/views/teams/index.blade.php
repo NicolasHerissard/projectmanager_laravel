@@ -37,6 +37,11 @@
                         @method('DELETE')
                         <button>Delete</button>
                     </form>
+                    <form action="{{ route('teams.edit', $team->id) }}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <button>Edit</button>
+                    </form>
                 </td>
             </tr>
         @endforeach
