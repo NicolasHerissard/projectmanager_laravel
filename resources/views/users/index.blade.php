@@ -28,6 +28,13 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->password }}</td>
+                <td>
+                    <form action="{{ route('users.delete', $user->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button id="btnDelete" type="submit" value="Delete">Delete</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>

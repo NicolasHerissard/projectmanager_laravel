@@ -9,19 +9,24 @@
     <title>{{ $title }}</title>
 </head>
 <body>
-<h1>Projet création</h1>
-<form action="{{ route('project.store') }}" method="post">
-    @csrf
-    <label for="name">Nom</label>
-    <input id="name" type="text" name="name">
-    <label for="description">Description</label>
-    <textarea name="description" id="description" cols="30" rows="10"></textarea>
-    <label for="deadline">Date de fin</label>
-    <input id="deadline" type="date" name="deadline">
-    <button type="submit">Enregistrer</button>
-</form>
+<div class="container">
+    <h1>Projet création</h1>
+    <form action="{{ route('project.store') }}" method="post">
+        @csrf
+        <label for="name">Nom</label>
+        <input id="name" type="text" name="name">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+        <label for="deadline">Date de fin</label>
+        <input id="deadline" type="date" name="deadline">
+        <button type="submit">Enregistrer</button>
+    </form>
+</div>
 </body>
 <style>
 
+    textarea {
+        resize: none;
+    }
 </style>
 </html>

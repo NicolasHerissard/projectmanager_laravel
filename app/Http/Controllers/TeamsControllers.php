@@ -45,8 +45,9 @@ class TeamsControllers extends Controller
     }
 
     #region delete
-    public function delete(Teams $teams): \Illuminate\Http\RedirectResponse
+    public function delete($id): \Illuminate\Http\RedirectResponse
     {
+        $teams = Teams::find($id);
         $teams->delete();
 
         return redirect()->route('teams.index');

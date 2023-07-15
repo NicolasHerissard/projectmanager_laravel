@@ -33,6 +33,8 @@
                 <td>{{ \Carbon\Carbon::parse($team->updated_at)->format('d/m/Y') }}</td>
                 <td>
                     <form action="{{ route('teams.delete', $team->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
                         <button>Delete</button>
                     </form>
                 </td>

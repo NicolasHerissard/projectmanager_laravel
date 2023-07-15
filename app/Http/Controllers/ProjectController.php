@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -51,28 +52,29 @@ class ProjectController extends Controller
     }
     #endregion
 
-    public function edit()
+    public function edit($id)
     {
-        return view('project.edit', [
-            'title' => 'Project update '
-        ]);
+        $project = Project::find($id);
+
+        return view('project.edit', compact('project'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        Project::update([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'deadline' => Carbon::parse($request->input('deadline'))
-        ]);
+        $project = Project::find($id);
+        $project->name = $request->input('name');
+        $project->description = $request->input('description');
+        $project->deadLine = $request->input('deadline');
+        $project->update();
 
         return redirect()->route('project.index');
     }
 
     #region delete
-    public function delete(Project $projects): \Illuminate\Http\RedirectResponse
+    public function delete($id): \Illuminate\Http\RedirectResponse
     {
-        $projects->delete();
+        $project = Project::find($id);
+        $project->delete();
 
         return redirect()->route('project.index');
     }

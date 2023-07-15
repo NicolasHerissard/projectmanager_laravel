@@ -34,6 +34,13 @@
                 <td>{{ $task->users_id }}</td>
                 <td>{{ \Carbon\Carbon::parse($task->created_at)->format('d/m/Y') }}</td>
                 <td>{{ \Carbon\Carbon::parse($task->updated_at)->format('d/m/Y') }}</td>
+                <td>
+                    <form action="{{ route('tasks.delete', $task->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button id="btnDelete" type="submit" value="Delete">Delete</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </tbody>
